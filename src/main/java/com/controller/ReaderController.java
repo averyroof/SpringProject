@@ -23,7 +23,8 @@ public class ReaderController {
     @GetMapping
     @ApiOperation(value = "Найти всех читателей")
     List<Reader> findAll() {
-        return readerService.findAll();
+        List<Reader> readers = readerService.findAll();
+        return readers;
     }
 
     @GetMapping("/filter")

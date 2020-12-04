@@ -1,6 +1,5 @@
 package com.controller;
 
-import com.entity.Book;
 import com.entity.Issue;
 import com.service.IssueService;
 import io.swagger.annotations.Api;
@@ -26,12 +25,6 @@ public class IssueController {
         return issueService.findAll();
     }
 
-//    @GetMapping("/filter")
-//    @ApiOperation(value = "Найти книгу по названию")
-//    Book findBookByTitle(String title) {
-//        return bookService.findByTitle(title);
-//    }
-
     @GetMapping("/{id}")
     @ApiOperation(value = "Найти выдачу по id")
     Issue findById(@PathVariable Long id) {
@@ -55,5 +48,26 @@ public class IssueController {
     @ApiOperation(value = "Удалить выдачу")
     void deleteIssue(@PathVariable Long id) {
         issueService.deleteById(id);
+    }
+
+    @PutMapping("/addReader")
+    @ApiOperation(value = "Установить читателя для выдачи")
+    Issue addReaderToIssue(@RequestParam Long id_issue, @RequestParam Long id_reader) {
+        return issueService.addReaderToIssue(id_issue, id_reader);
+    }
+
+    @PutMapping("/addBook")
+    @ApiOperation(value = "Установить книгу для выдачи")
+    Issue addBookToIssue(@RequestParam Long id_issue, @RequestParam Long id_book) {
+        return issueService.addBookToIssue(id_issue, id_book);
+    }
+
+    @GetMapping("/findActive")
+    @ApiOperation(value = "Найти действительные выдачи")
+//    List<String> findActive(@RequestParam String password) {
+    List<String> findActive() {
+//        if (password.equals("123"))
+        return issueService.findReadersWithActiveIssue();
+//        throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED);
     }
 }

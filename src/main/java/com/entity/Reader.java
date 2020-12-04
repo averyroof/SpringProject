@@ -1,5 +1,8 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -9,6 +12,7 @@ public class Reader {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(hidden = true)
     private Long id;
 
     private String fullName;
@@ -16,6 +20,8 @@ public class Reader {
     private Integer age;
 
     @OneToMany(mappedBy = "reader", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@ApiModelProperty(hidden = true)
+    @JsonIgnore
     private List<Issue> issuing;
 
     public Reader() {

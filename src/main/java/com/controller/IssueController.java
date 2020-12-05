@@ -52,6 +52,7 @@ public class IssueController {
 
     @PutMapping("/addReader")
     @ApiOperation(value = "Установить читателя для выдачи")
+        // ?
     Issue addReaderToIssue(@RequestParam Long id_issue, @RequestParam Long id_reader) {
         return issueService.addReaderToIssue(id_issue, id_reader);
     }
@@ -64,10 +65,7 @@ public class IssueController {
 
     @GetMapping("/findActive")
     @ApiOperation(value = "Найти действительные выдачи")
-//    List<String> findActive(@RequestParam String password) {
     List<String> findActive() {
-//        if (password.equals("123"))
         return issueService.findReadersWithActiveIssue();
-//        throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED);
     }
 }

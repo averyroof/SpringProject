@@ -39,6 +39,13 @@ public class Issue {
         this.dateDelivery = dateDelivery;
     }
 
+    public Issue(Date dateOfIssue, Date dateDelivery, Reader reader, Book book) {
+        this.dateOfIssue = dateOfIssue;
+        this.dateDelivery = dateDelivery;
+        this.reader = reader;
+        this.book = book;
+    }
+
     public Long getId() {
         return id;
     }

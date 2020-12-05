@@ -11,7 +11,7 @@ import java.util.List;
 
 @Api
 @RestController
-@RequestMapping("/Readers")
+@RequestMapping("/readers")
 public class ReaderController {
 
     final ReaderService readerService;

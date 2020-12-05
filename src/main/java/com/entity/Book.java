@@ -20,7 +20,6 @@ public class Book {
     private Integer year;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@ApiModelProperty(hidden = true)
     @JsonIgnore
     private List<Issue> issuing;
 

@@ -1,6 +1,8 @@
 package com;
 
-import com.entity.*;
+import com.entity.Book;
+import com.entity.Issue;
+import com.entity.Reader;
 import com.repository.BookRepository;
 import com.repository.IssueRepository;
 import com.repository.ReaderRepository;
@@ -10,15 +12,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.text.SimpleDateFormat;
-import java.util.HashSet;
-import java.util.Set;
 
 @SpringBootApplication
-@EnableTransactionManagement
+//@EnableTransactionManagement
 public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
     final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     final ReaderRepository readerRepository;
@@ -51,25 +54,5 @@ public class Application {
             Issue issue3 = issueRepository.save(new Issue(formatter.parse("2020-12-01"), formatter.parse("2021-01-10"), reader2, book4));
             Issue issue4 = issueRepository.save(new Issue(formatter.parse("2020-10-15"), formatter.parse("2020-11-17"), reader3, book3));
         };
-    }
-
-//    @Bean
-//    @Profile("prod")
-//    public ApplicationRunner prodApplicationRunner() {
-//        return arg -> {
-//            if (userRepository.findAll().isEmpty()) {
-//                HashSet<Role> userRoles = new HashSet<>();
-//                userRoles.add(Role.USER);
-//                HashSet<Role> adminRoles = new HashSet<>();
-//                adminRoles.add(Role.USER);
-//                adminRoles.add(Role.ADMIN);
-//                User user = userRepository.save(new User("user", "password", true, userRoles));
-//                User admin = userRepository.save(new User("admin", "password", true, adminRoles));
-//            }
-//        };
-//    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
     }
 }

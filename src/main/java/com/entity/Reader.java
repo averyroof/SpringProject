@@ -20,7 +20,6 @@ public class Reader {
     private Integer age;
 
     @OneToMany(mappedBy = "reader", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@ApiModelProperty(hidden = true)
     @JsonIgnore
     private List<Issue> issuing;
 

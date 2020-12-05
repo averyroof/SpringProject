@@ -1,8 +1,6 @@
 package com;
 
-import com.entity.Book;
-import com.entity.Issue;
-import com.entity.Reader;
+import com.entity.*;
 import com.repository.BookRepository;
 import com.repository.IssueRepository;
 import com.repository.ReaderRepository;
@@ -15,6 +13,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 @EnableTransactionManagement
@@ -35,7 +35,7 @@ public class Application {
     @Bean
     @Profile("dev")
     public ApplicationRunner devApplicationRunner() {
-        return arg-> {
+        return arg -> {
             Reader reader1 = readerRepository.save(new Reader("Иванов Иван Иванович", 25));
             Reader reader2 = readerRepository.save(new Reader("Буданов Савелий Ермолаевич", 14));
             Reader reader3 = readerRepository.save(new Reader("Степанишин Тарас Андронович", 36));
@@ -52,6 +52,22 @@ public class Application {
             Issue issue4 = issueRepository.save(new Issue(formatter.parse("2020-10-15"), formatter.parse("2020-11-17"), reader3, book3));
         };
     }
+
+//    @Bean
+//    @Profile("prod")
+//    public ApplicationRunner prodApplicationRunner() {
+//        return arg -> {
+//            if (userRepository.findAll().isEmpty()) {
+//                HashSet<Role> userRoles = new HashSet<>();
+//                userRoles.add(Role.USER);
+//                HashSet<Role> adminRoles = new HashSet<>();
+//                adminRoles.add(Role.USER);
+//                adminRoles.add(Role.ADMIN);
+//                User user = userRepository.save(new User("user", "password", true, userRoles));
+//                User admin = userRepository.save(new User("admin", "password", true, adminRoles));
+//            }
+//        };
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

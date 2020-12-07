@@ -7,18 +7,9 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.UserDetailsManagerConfigurer;
 
-import javax.sql.DataSource;
-
 @Configuration
 @ConditionalOnClass(AuthenticationManagerBuilder.class) // включает механизм автоконфигураций
 public class AuthInitializerConfig {
-
-    private final DataSource dataSource;
-
-    public AuthInitializerConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
 
     @Profile("dev")
     @Bean

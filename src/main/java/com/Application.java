@@ -6,7 +6,6 @@ import com.entity.Reader;
 import com.repository.BookRepository;
 import com.repository.IssueRepository;
 import com.repository.ReaderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +15,7 @@ import org.springframework.context.annotation.Profile;
 import java.text.SimpleDateFormat;
 
 @SpringBootApplication
+//@EnableAspectJAutoProxy(proxyTargetClass=true)
 //@EnableTransactionManagement
 public class Application {
 
@@ -28,7 +28,6 @@ public class Application {
     final BookRepository bookRepository;
     final IssueRepository issueRepository;
 
-    @Autowired
     public Application(ReaderRepository readerRepository, BookRepository bookRepository, IssueRepository issueRepository) {
         this.readerRepository = readerRepository;
         this.bookRepository = bookRepository;

@@ -9,8 +9,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class StatisticsService {
@@ -24,6 +24,11 @@ public class StatisticsService {
         this.bookRepository = bookRepository;
         this.issueRepository = issueRepository;
         this.readerRepository = readerRepository;
+    }
+
+    @Transactional
+    public List<Statistics> findAll() {
+        return (List<Statistics>) statisticsRepository.findAll();
     }
 
     @Scheduled(fixedDelay = 60000) //  в минуту

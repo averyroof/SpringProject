@@ -51,8 +51,7 @@ public class IssueController {
     }
 
     @PutMapping("/addReader")
-    @ApiOperation(value = "Установить читателя для выдачи")
-        // ?
+    @ApiOperation(value = "Установить читателя для выдачи") // ?
     Issue addReaderToIssue(@RequestParam Long id_issue, @RequestParam Long id_reader) {
         return issueService.addReaderToIssue(id_issue, id_reader);
     }

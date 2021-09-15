@@ -1,4 +1,4 @@
-# Spring Boot Project
+# Spring Boot Project (+ Swagger)
 
 Develop REST API Spring based microservice using Boot, Data JPA and MVC
 
